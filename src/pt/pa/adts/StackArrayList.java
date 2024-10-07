@@ -32,10 +32,14 @@ public class StackArrayList<T> implements Stack<T> {
      * @param element o elemento a ser adicionado
      * @throws FullStackException se a pilha estiver cheia
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void push(T element) throws FullStackException {
-        if(this.size >= this.elements.length) throw new FullStackException();
-
+        if(this.size >= this.elements.length){
+            T[] newArray = (T[]) new Object[this.elements.length * 2];
+            System.arraycopy(this.elements, 0, newArray, 0, this.size);
+            this.elements = newArray;
+        }
         this.elements[this.size++] = element;
     }
 
