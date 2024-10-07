@@ -64,7 +64,9 @@ public class StackArrayList<T> implements Stack<T> {
      */
     @Override
     public T peek() throws EmptyStackException {
-        throw new UnsupportedOperationException("This method is not implemented yet.");
+        if(this.size == 0) throw new EmptyStackException();
+
+        return this.elements[this.size - 1];
     }
 
     /**
@@ -81,23 +83,21 @@ public class StackArrayList<T> implements Stack<T> {
      * Verifica se a pilha está vazia.
      *
      * @return {@code true} se a pilha estiver vazia; {@code false} caso contrario
-     * @throws UnsupportedOperationException se o método não estiver implementado
      */
     @Override
     public boolean isEmpty() {
-
-        throw new UnsupportedOperationException("This method is not implemented yet.");
-
+        return this.size == 0;
     }
 
     /**
      * Remove todos os elementos da pilha, tornando-a vazia.
      *
-     * @throws UnsupportedOperationException se o método não estiver implementado
      */
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("This method is not implemented yet.");
+        for (int i = 0; i < this.size; i++) {
+            this.elements[i] = null;
+        }
+        this.size = 0;
     }
-
 }
