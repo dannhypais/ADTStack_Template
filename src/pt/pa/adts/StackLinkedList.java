@@ -21,7 +21,8 @@ public class StackLinkedList<T> implements Stack<T> {
         Element should be stored in a new node which is pointed by top sentinel.
         Must maintain the chaining of all nodes.
          */
-        throw new UnsupportedOperationException("This method is not implemented yet.");
+        this.top = new Node(element, this.top);
+        this.size++;
     }
 
     @Override
@@ -30,27 +31,36 @@ public class StackLinkedList<T> implements Stack<T> {
         The element at the top of the stack is the element stored in the
         node immediately after the top sentinel.
          */
-     throw new UnsupportedOperationException("This method is not implemented yet.");
+     if(this.size==0)throw new EmptyStackException();
+
+     T element = this.top.element;
+     this.top = this.top.next;
+     this.size--;
+
+     return element;
     }
 
     @Override
     public T peek() throws EmptyStackException {
-     throw new UnsupportedOperationException("This method is not implemented yet.");
+        if(this.size==0)throw new EmptyStackException();
+
+        return this.top.element;
     }
 
     @Override
     public int size() {
-      throw new UnsupportedOperationException("This method is not implemented yet.");
+      return this.size;
     }
 
     @Override
     public boolean isEmpty() {
-   throw new UnsupportedOperationException("This method is not implemented yet.");
+        return this.size==0;
     }
 
     @Override
     public void clear() {
-       throw new UnsupportedOperationException("This method is not implemented yet.");
+       this.top=null;
+       this.size=0;
     }
 
     /**
